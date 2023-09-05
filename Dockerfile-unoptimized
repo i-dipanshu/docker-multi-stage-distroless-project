@@ -1,5 +1,5 @@
 FROM ubuntu 
-RUN apt update && apt install -y go-lang
+RUN apt update && apt install -y golang
 ENV GO111MODULE=off
 COPY . .
 RUN CGO_ENABLED=0 go build -o /app .
