@@ -3,6 +3,9 @@ Our application is a simple calculator app developed using Golang. The idea behi
 
 ## Advantages 
 - Using multi-stage build and distroless images, reduces the image size. In our case the image is reduced from 839mb to 1.83mb which is almost 800% reduction in image size. 
+
+    ![docker-images-diff ](https://github.com/jenkinsci/test-results-analyzer-plugin/assets/84374342/453c4986-0ac9-4d8a-8137-2c95cd511e6c)
+
 - Using distroless images for running the application provides more security against os bugs and vulnerabilities as distroless images have bare-minimum os configured 
 
 
