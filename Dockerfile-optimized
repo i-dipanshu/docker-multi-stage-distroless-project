@@ -1,0 +1,29 @@
+### Stage 1 - Setting up binaries of Go Lang to be used in the next stage ###
+
+# Use the official Ubuntu image as the base for this stage
+FROM ubuntu AS build
+
+# Update package list and install the Go programming language
+RUN apt update && apt install -y golang
+
+# Set the GO111MODULE environment variable to "off" to disable module support
+ENV GO111MODULE=off
+
+# Copy the current directory (including source code) into the build context
+COPY . .
+
+# Compile the Go application, disabling cgo, and place the binary in /app
+RUN CGO_ENABLED=0 go build -o /app .
+
+#############################################################################
+
+## Stage 2 - Distroless Scratch image to serve our app
+
+# Use a minimal "scratch" image as the base for this stage
+FROM scratch
+
+# Copy the compiled binary from the previous stage into the scratch stage
+COPY --from=build /app /app
+
+# Set the default command to run when a container starts, which is our /app binary
+ENTRYPOINT [ "/app" ]
