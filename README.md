@@ -31,7 +31,7 @@ So, We'll build the application in 1st stage by installing the binaries. In the 
 1. Build the image 
 
     ```sh
-    docker build -t go_calculator:v1 -f Dockerfile-optimized .
+    docker build -t go_calculator_optimized:v1 -f Dockerfile-optimized .
     ```
 
 2. List the image 
